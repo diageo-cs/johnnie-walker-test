@@ -49,7 +49,7 @@
             :data-id="index"
           >
             <div
-              class="recipes__copy-wrapper position--relative"
+              class="recipes__copy-wrapper-all position--relative"
               :data-id="index"
             >
               <div
@@ -159,16 +159,15 @@
                           "
                         >
                           <div
-                            class="ml--10"
-                            style="
-                              font-family: JohnnieWalker-Headline;
-                              margin-bottom: 20px;
-                            "
+                            class="ml--10 ingredient--1"
+                            :data-id="index"
+                            style="font-family: JohnnieWalker-Headline"
                           >
                             {{ item.ingredients.first }}
                           </div>
                           <div
-                            class="ml--30"
+                            class="ml--30 ingredient--2"
+                            :data-id="index"
                             style="font-family: JohnnieWalker-Headline"
                           >
                             {{ item.ingredients.second }}
@@ -183,9 +182,17 @@
                         >
                           <div
                             style="font-family: JohnnieWalker-Headline"
-                            class="ml--20"
+                            class="ml--20 ingredient--3"
+                            :data-id="index"
                           >
                             {{ item.ingredients.third }}
+                          </div>
+                          <div
+                            style="font-family: JohnnieWalker-Headline"
+                            class="ingredient-extra--3"
+                            :data-id="index"
+                          >
+                            {{ item.ingredients.extra3 }}
                           </div>
                         </div>
                         <div
@@ -197,22 +204,17 @@
                         >
                           <div
                             style="font-family: JohnnieWalker-Headline"
-                            class="ml--0"
+                            class="ml--0 ingredient--4"
+                            :data-id="index"
                           >
                             {{ item.ingredients.fourth }}
                           </div>
-                        </div>
-                        <div
-                          :class="
-                            'recipe__tab-ingredient recipe__tab-ingredient--' +
-                            index
-                          "
-                        >
                           <div
                             style="font-family: JohnnieWalker-Headline"
-                            class="ml--0"
+                            class="ingredient-extra--4"
+                            :data-id="index"
                           >
-                            {{ item.ingredients.fifth }}
+                            {{ item.ingredients.extra4 }}
                           </div>
                         </div>
                         <div
@@ -223,9 +225,45 @@
                         >
                           <div
                             style="font-family: JohnnieWalker-Headline"
-                            class="ml--0"
+                            class="ml--0 ingredient--5"
+                            :data-id="index"
+                          >
+                            {{ item.ingredients.fifth }}
+                          </div>
+                          <div
+                            style="font-family: JohnnieWalker-Headline"
+                            class="ingredient-extra--5"
+                            :data-id="index"
+                          >
+                            {{ item.ingredients.extra5 }}
+                          </div>
+                          <div
+                            style="font-family: JohnnieWalker-Headline"
+                            class="ingredient-extra--55"
+                            :data-id="index"
+                          >
+                            {{ item.ingredients.extra55 }}
+                          </div>
+                        </div>
+                        <div
+                          :class="
+                            'recipe__tab-ingredient recipe__tab-ingredient--' +
+                            index
+                          "
+                        >
+                          <div
+                            style="font-family: JohnnieWalker-Headline"
+                            class="ml--0 ingredient--1"
+                            :data-id="index"
                           >
                             {{ item.ingredients.sixth }}
+                          </div>
+                          <div
+                            style="font-family: JohnnieWalker-Headline"
+                            class="ingredient-extra--6"
+                            :data-id="index"
+                          >
+                            {{ item.ingredients.extra6 }}
                           </div>
                         </div>
                       </div>
@@ -250,7 +288,7 @@
                         >
                           <div
                             style="font-family: JohnnieWalker-Headline"
-                            class="pr--20"
+                            class="method"
                           >
                             {{ item.method }}
                           </div>
@@ -310,9 +348,11 @@ export default {
           ingredients: {
             first: "JOHNNIE WALKER",
             second: "BLACK LABEL 25ML",
-            third: "A scoop of ice cream",
+            third: "A scoop of",
+            extra3: "ice cream",
             fourth: "Espresso 45ml",
-            fifth: "Chocolate to shave and garnish",
+            fifth: "Chocolate to shave",
+            extra5: " and garnish",
           },
           method:
             "Drop a scoop of good quality vanilla ice cream into a coupe glass. Pour 25ml of Johnnie Walker Black Label over the scoop, then 25ml of hot espresso so the ice cream melts slightly. Garnish with chocolate shavings & enjoy.",
@@ -327,10 +367,14 @@ export default {
           span_4: "RECIPE",
           ingredients: {
             first: "JOHNNIE WALKER",
-            second: "2 dashes of AROMATIC BITTERS",
-            third: "A TEASPOON OF MAPLE SYRUP",
-            fourth: "SERVE OVER ICE",
-            fifth: "Add a twist of orange",
+            second: "black label 50ml",
+            third: "2 dashes of ",
+            extra3: "AROMATIC BITTERS",
+            fourth: "A TEASPOON OF ",
+            extra4: "MAPLE SYRUP",
+            fifth: "SERVE OVER ICE",
+            sixth: "Add a twist ",
+            extra6: "of orange",
           },
           method:
             "POUR 50ML JOHNNIE WALKER BLACK LABEL, 10ML MAPLE SYRUP AND 2 DASHES AROMATIC BITTERS INTO A MIXING GLASS. Add ice and stir well. Strain into a tumbler over ice. Twist an orange peel around the glass edge to release the aromatic oils, then add as garnish with toasted rosemary & enjoy.",
@@ -345,9 +389,10 @@ export default {
           span_4: "RECIPE",
           ingredients: {
             first: "JOHNNIE WALKER",
-            second: "ORANGE JUICE 50ml",
-            third: "a Cinnamon stick",
-            fourth: "cranberry juice 50ml",
+            second: "BLACK LABEL 25ML",
+            third: "ORANGE JUICE 50ml",
+            fourth: "a Cinnamon stick",
+            fifth: "cranberry juice 50ml",
           },
           method:
             "Serves One. Multiply by number of guests for group serving. Heat 50 ml Johnnie Walker Black Label, 50 ml Orange Juice, 50 ml Cranberry juice and 30ml water in a pan. As it comes to a simmer, add a teaspoon of Maple Syrup and a Cinnamon Stick. Garnish with a slice of orange & enjoy.",
@@ -364,9 +409,13 @@ export default {
             first: "JOHNNIE WALKER",
             second: "BLACK LABEL 25ML",
             third: "ICE",
-            fourth: "PEACH CORDIAL OR SYRUP 25ML",
-            fifth: "SODA WATER OR SPARKLING PEACH TEA 150ML",
-            sixth: "PEACH SLICE (CINNAMON DUSTING OPTIONAL)",
+            fourth: "PEACH CORDIAL",
+            extra4: "OR SYRUP 25ML",
+            fifth: "SODA WATER OR  ",
+            extra5: "SPARKLING PEACH TEA",
+            extra55: "150ML",
+            sixth: "PEACH SLICE",
+            extra6: "(CINNAMON DUSTING OPTIONAL)",
           },
           method:
             "Pour 50ml Johnnie Walker Black Label into a highball glass filled with ice. Add 25ml peach cordial or syrup and 150ml soda water or sparkling peach tea. Stir and garnish with a peach slice.",
@@ -383,7 +432,8 @@ export default {
             first: "JOHNNIE WALKER",
             second: "BLACK LABEL 25ML",
             third: "ICE",
-            fourth: "LEMONADE 150ML (CLEAR OR CLOUDY)",
+            fourth: "LEMONADE 150ML",
+            extra4: "(CLEAR OR CLOUDY)",
             fifth: "LEMON PEEL",
             sixth: "VERBENA LEAF (OPTIONAL)",
           },
@@ -1396,10 +1446,12 @@ const props = defineProps({
 }
 .overlay-panel-actions-primary {
   display: flex;
-  justify-content: center;
-  color: #ffff;
-  padding: 10px;
-  margin-bottom: 10px;
+  color: #fcf5df;
+  font-size: 22px;
+  letter-spacing: 1px;
+  line-height: 24px;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
 .overlay-panel-actions-primary :nth-child(2) {
   margin-left: 20px;
@@ -1439,7 +1491,113 @@ const props = defineProps({
 }
 .recipes__copy-wrapper {
   font-family: "JohnnieWalker-Headline";
+  text-align: start;
 }
+.recipes__copy-title--1[data-id="1"],
+.recipes__copy-title--1[data-id="2"] {
+  margin-left: 60px;
+}
+.recipes__copy-title--2[data-id="1"],
+.recipes__copy-title--2[data-id="2"] {
+  margin-left: 15px;
+}
+.recipes__copy-title--4[data-id="1"],
+.recipes__copy-title--4[data-id="2"] {
+  margin-left: 15px;
+}
+.recipes__copy-title--2[data-id="3"],
+.recipes__copy-title--2[data-id="4"] {
+  margin-left: 40px;
+}
+.recipes__copy-title--4[data-id="3"],
+.recipes__copy-title--4[data-id="4"] {
+  margin-left: 15px;
+}
+
+.recipes__copy-title--2[data-id="5"] {
+  margin-left: 20px;
+}
+.recipes__copy-title--4[data-id="5"] {
+  margin-left: 40px;
+}
+
+.recipes__copy-title--2[data-id="6"] {
+  margin-left: 40px;
+}
+.recipes__copy-title--4[data-id="6"] {
+  margin-left: 15px;
+}
+
+.ingredient--2[data-id="3"]:second-line {
+  margin-left: 15px;
+}
+
+.ingredient-extra--3[data-id="2"],
+.ingredient-extra--5[data-id="2"] {
+  margin-left: 50px;
+}
+.ingredient--5[data-id="2"] {
+  margin-left: 20px;
+}
+
+/////ingredient 3//////
+.ingredient-extra--3[data-id="3"] {
+  margin-left: 30px;
+}
+.ingredient--4[data-id="3"] {
+  margin-left: 30px;
+}
+.ingredient-extra--4[data-id="3"] {
+  margin-left: 20px;
+}
+.ingredient--5[data-id="3"] {
+  margin-left: 10px;
+}
+.ingredient--6[data-id="3"] {
+  margin-left: 20px;
+}
+
+///////ingredient 4 ///////
+.ingredient--3[data-id="4"] {
+  margin-left: 30px;
+}
+.ingredient--4[data-id="4"] {
+  margin-left: 0px;
+}
+.ingredient--5[data-id="4"] {
+  margin-left: 20px;
+}
+
+////////ingredient 5 //////////
+.ingredient--4[data-id="5"] {
+  margin-left: 30px;
+}
+.ingredient-extra--4[data-id="5"] {
+  margin-left: 20px;
+}
+.ingredient--5[data-id="5"] {
+  margin-left: 10px;
+}
+.ingredient-extra--5[data-id="5"] {
+  margin-left: 30px;
+}
+.ingredient-extra--55[data-id="5"] {
+  margin-left: 10px;
+}
+.ingredient--6[data-id="5"] {
+  margin-left: 20px;
+}
+/////////ingredient 6 /////////
+.ingredient--4[data-id="6"] {
+  margin-left: 30px;
+}
+.ingredient--5[data-id="6"] {
+  margin-left: 20px;
+}
+.slick-track {
+  width: 800px;
+}
+
 .recipes__copy-title {
   color: #fcf5df;
   font-family: "JohnnieWalker-Headline";
@@ -1474,7 +1632,7 @@ const props = defineProps({
 .recipe__tab-ingredient {
   color: #fcf5df;
   font-family: "JohnnieWalker-Headline";
-  font-size: 18px;
+  font-size: 18px !important;
   line-height: 18px;
   letter-spacing: 1px;
   margin-top: 20px;
@@ -1523,6 +1681,16 @@ const props = defineProps({
 .explore-recipe-chevron:nth-child(3) {
   animation: move 3s ease-out 0.4s infinite;
 }
+.method {
+  max-width: 212px;
+  min-height: 230px;
+  max-height: 230px;
+}
+.recipe__tab-ingredients-wrapper {
+  min-height: 230px;
+  max-height: 230px;
+  max-width: 230px;
+}
 @keyframes pulse {
   to {
     opacity: 1;
@@ -1542,6 +1710,20 @@ const props = defineProps({
     opacity: 0;
   }
 }
+@media only screen and (max-width: 1130px) {
+  .video {
+    max-width: 500px !important;
+  }
+  .recipe__button--explore {
+    font-size: 23px !important;
+  }
+  .recipes__img-wrapper {
+    width: 210 !important;
+  }
+  .video {
+    max-width: 460px !important;
+  }
+}
 @media only screen and (max-width: 1040px) {
   .video {
     max-width: 500px !important;
@@ -1550,7 +1732,7 @@ const props = defineProps({
     font-size: 23px !important;
   }
 }
-@media only screen and (max-width: 990px) {
+@media only screen and (max-width: 1000px) {
   .video {
     max-width: 400px !important;
   }
@@ -1565,17 +1747,35 @@ const props = defineProps({
     font-size: 23px !important;
   }
 }
-@media only screen and (max-width: 790px) {
+@media only screen and (max-width: 820px) {
+  .recipe__button--explore {
+    font-size: 19px !important;
+  }
   .video {
     max-width: 370px !important;
   }
+  .recipes__copy-title {
+    font-size: 60px !important;
+    line-height: 50px !important;
+  }
 }
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 780px) {
+  .video {
+    max-width: 320px !important;
+  }
+  .recipes__img-wrapper img {
+    width: 160px !important;
+  }
+}
+@media only screen and (max-width: 650px) {
   .video {
     min-width: 100% !important;
   }
   .logo {
     display: none;
+  }
+  .recipes__img-wrapper img {
+    width: 230px !important;
   }
   .recipes__wrapper {
     padding: 0 0 !important;
@@ -1589,8 +1789,8 @@ const props = defineProps({
     order: 2 !important;
   }
   .recipes__img-wrapper img {
-    margin-top: -150px !important;
-    margin-right: -60px !important;
+    margin-top: -80px !important;
+    margin-right: -70px !important;
   }
   .recipes__col-content {
     width: 100% !important;
@@ -1600,6 +1800,12 @@ const props = defineProps({
   }
   .recipes__copy-wrapper {
     width: 100% !important;
+    margin-left: 100px !important;
+    margin-top: 50px !important;
+  }
+  .recipes__copy-title {
+    font-size: 80px !important;
+    line-height: 70px !important;
   }
   .recipes__wrapper.even-elem .recipes__col-content {
     order: 2 !important;
@@ -1615,9 +1821,14 @@ const props = defineProps({
     margin-left: 35%;
   }
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 450px) {
+  .recipes__copy-wrapper {
+    margin-left: 30px !important;
+  }
   .recipes__img-wrapper img {
     margin-top: -80px !important;
+    margin-right: -70px !important;
+    width: 210px !important;
   }
 }
 </style>

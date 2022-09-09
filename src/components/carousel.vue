@@ -15,6 +15,7 @@
               <div>
                 <img
                   class="carousel__img--product opacity--0"
+                  :data-id="item.id"
                   :src="item.img"
                 />
               </div>
@@ -59,16 +60,19 @@ var carousel = {
       title: "Gordon’s Special Dry London Gin&nbsp;70cl",
       img: "images/carousel-bottle--1.png",
       type: "RED LABEL",
+      id: 1,
     },
     2: {
       title: "Gordon's Premium Pink Distilled Gin&nbsp;70cl",
       img: "images/carousel-bottle--2.png",
       type: "BLACK LABEL",
+      id: 2,
     },
     3: {
       title: "Gordon's MORELLO cherry Gin&nbsp;70cl",
       img: "images/carousel-bottle--3.png",
       type: "BLUE LABEL",
+      id: 3,
     },
   },
 };
@@ -124,7 +128,7 @@ $(document).ready(function () {
         },
       },
       {
-        breakpoint: 750,
+        breakpoint: 650,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -168,7 +172,18 @@ $(document).ready(function () {
   color: white;
 }
 .slick-track {
-  display: flex;
-  justify-content: center;
+  // display: flex;
+  // justify-content: center;
+  width: 801px;
+}
+.carousel__img--product[data-id="1"],
+.carousel__img--product[data-id="3"] {
+  transform: scale(0.8, 0.8);
+}
+
+@media only screen and (max-width: 650px) {
+  .carousel__img-product[data-id="2"] {
+    transform: scale(0.8, 0.8) !important;
+  }
 }
 </style>
