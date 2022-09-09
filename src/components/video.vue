@@ -18,7 +18,10 @@
         <div
           class="recipes__col recipes__col--video recipes__col--left position--relative height--100p"
         >
-          <div class="videos__stage-col videos__stage-col--video">
+          <div
+            class="videos__stage-col videos__stage-col--video"
+            :data-id="`${index}`"
+          >
             <video
               :id="`recipe-video-${index}`"
               :data-id="`${index}`"
@@ -33,6 +36,231 @@
             <span class="video__pause-play" :data-id="index"
               ><img src="../../public/video/play--white.png" width="100"
             /></span>
+          </div>
+        </div>
+        <div
+          class="recipes__col-content temp__flexbox temp__ai--fs temp__jc--fs"
+        >
+          <div class="recipes__img-wrapper" :data-id="`${index}`">
+            <img :src="item.img" width="260" />
+          </div>
+          <div
+            class="recipes__copy-wrapper position--relative"
+            :data-id="index"
+          >
+            <div
+              class="recipes__copy-wrapper position--relative"
+              :data-id="index"
+            >
+              <div
+                class="recipes__copy-title recipes__copy-title--1"
+                :data-id="`${index}`"
+              >
+                {{ item.span_1 }}
+              </div>
+              <div
+                class="recipes__copy-title recipes__copy-title--2"
+                :data-id="`${index}`"
+              >
+                {{ item.span_2 }}
+              </div>
+              <div
+                class="recipes__copy-title recipes__copy-title--3"
+                :data-id="`${index}`"
+              >
+                {{ item.span_3 }}
+              </div>
+              <div
+                class="recipes__copy-title recipes__copy-title--4"
+                :data-id="`${index}`"
+              >
+                {{ item.span_4 }}
+              </div>
+            </div>
+            <div
+              class="recipe__tab recipe__tab--ingredients position--relative"
+            >
+              <div
+                class="recipe__button--explore noselect"
+                data-height="1"
+                data-id="1"
+                data-ol-has-click-handler=""
+                style="pointer-events: auto"
+                @click="
+                  ToggleDiv('THEDiv-' + index);
+                  isHidden = !isHidden;
+                "
+              >
+                {{ isHidden ? "EXPLORE RECIPE" : "HIDE RECIPE" }}
+
+                <img
+                  class="explore-recipe-chevron"
+                  src="images/chevron--left.svg"
+                  width="11"
+                  style="
+                    z-index: 100;
+                    margin-left: -2px;
+                    transform: rotate(180deg);
+                    opacity: 0;
+                  "
+                /><img
+                  class="explore-recipe-chevron"
+                  src="images/chevron--left.svg"
+                  width="11"
+                  style="
+                    z-index: 100;
+                    margin-left: -2px;
+                    transform: rotate(180deg);
+                    opacity: 0;
+                  "
+                />
+                <img
+                  class="explore-recipe-chevron"
+                  src="images/chevron--left.svg"
+                  width="11"
+                  style="
+                    z-index: 100;
+                    margin-left: -2px;
+                    transform: rotate(180deg);
+                    opacity: 0;
+                  "
+                />
+              </div>
+
+              <div
+                class="recipe__hidden"
+                style="display: none"
+                :id="'THEDiv-' + index"
+              >
+                <div class="overlay-panel-actions-primary">
+                  <p
+                    v-for="(tab, index) in tabs"
+                    :key="tab"
+                    @click="currentTab = index"
+                    :class="{ active: currentTab === index }"
+                    style="font-family: JohnnieWalker-Headline"
+                  >
+                    {{ tab }}
+                  </p>
+                </div>
+                <div class="content-bd">
+                  <div class="tab-content">
+                    <div class="tab" :class="{ active: currentTab === 0 }">
+                      <div
+                        :class="
+                          'recipe__tab-ingredients-wrapper recipe__tab-ingredients-wrapper--' +
+                          index
+                        "
+                      >
+                        <div
+                          :class="
+                            'recipe__tab-ingredient recipe__tab-ingredient--' +
+                            index
+                          "
+                        >
+                          <div
+                            class="ml--10"
+                            style="
+                              font-family: JohnnieWalker-Headline;
+                              margin-bottom: 20px;
+                            "
+                          >
+                            {{ item.ingredients.first }}
+                          </div>
+                          <div
+                            class="ml--30"
+                            style="font-family: JohnnieWalker-Headline"
+                          >
+                            {{ item.ingredients.second }}
+                          </div>
+                        </div>
+                        <div
+                          :class="
+                            'recipe__tab-ingredient recipe__tab-ingredient--' +
+                            index
+                          "
+                          style="font-family: JohnnieWalker-Headline"
+                        >
+                          <div
+                            style="font-family: JohnnieWalker-Headline"
+                            class="ml--20"
+                          >
+                            {{ item.ingredients.third }}
+                          </div>
+                        </div>
+                        <div
+                          :class="
+                            'recipe__tab-ingredient recipe__tab-ingredient--' +
+                            index
+                          "
+                          style="font-family: JohnnieWalker-Headline"
+                        >
+                          <div
+                            style="font-family: JohnnieWalker-Headline"
+                            class="ml--0"
+                          >
+                            {{ item.ingredients.fourth }}
+                          </div>
+                        </div>
+                        <div
+                          :class="
+                            'recipe__tab-ingredient recipe__tab-ingredient--' +
+                            index
+                          "
+                        >
+                          <div
+                            style="font-family: JohnnieWalker-Headline"
+                            class="ml--0"
+                          >
+                            {{ item.ingredients.fifth }}
+                          </div>
+                        </div>
+                        <div
+                          :class="
+                            'recipe__tab-ingredient recipe__tab-ingredient--' +
+                            index
+                          "
+                        >
+                          <div
+                            style="font-family: JohnnieWalker-Headline"
+                            class="ml--0"
+                          >
+                            {{ item.ingredients.sixth }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      style="font-family: JohnnieWalker-Headline"
+                      class="tab"
+                      :class="{ active: currentTab === 1 }"
+                    >
+                      <div
+                        style="font-family: JohnnieWalker-Headline"
+                        :class="
+                          'recipe__tab-method recipe__tab-method--' + index
+                        "
+                      >
+                        <div
+                          :class="
+                            'recipe__tab-method-step recipe__tab-method-step--' +
+                            index
+                          "
+                          style="font-family: JohnnieWalker-Headline"
+                        >
+                          <div
+                            style="font-family: JohnnieWalker-Headline"
+                            class="pr--20"
+                          >
+                            {{ item.method }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -89,7 +317,6 @@ export default {
           method:
             "Drop a scoop of good quality vanilla ice cream into a coupe glass. Pour 25ml of Johnnie Walker Black Label over the scoop, then 25ml of hot espresso so the ice cream melts slightly. Garnish with chocolate shavings & enjoy.",
         },
-
         3: {
           video: "video/old-fashioned_SparkVideo.mp4",
           video_poster: "video/old-fashioned_SparkVideo.jpg",
@@ -168,13 +395,86 @@ export default {
   },
   methods: {
     enterViewRecipe: function (event) {
-      gsap.set(".video[data-id='1']", {
+      gsap.set(".hero__img--serve", {
+        x: () => {
+          return 700;
+        },
+        opacity: 1,
+      });
+      gsap.set(".hero__p", {
         x: () => {
           return 0;
         },
         opacity: 0,
       });
-      gsap.set(".recipes__copy-wrapper[data-id='1']", {
+
+      gsap.set(".videos__stage-col[data-id='1']", {
+        x: () => {
+          return -50;
+        },
+        opacity: 0,
+      });
+      gsap.set(" .videos__stage-col[data-id='2']", {
+        x: () => {
+          return 50;
+        },
+        opacity: 0,
+      });
+      gsap.set(" .videos__stage-col[data-id='3']", {
+        x: () => {
+          return -50;
+        },
+        opacity: 0,
+      });
+      gsap.set(" .videos__stage-col[data-id='4']", {
+        x: () => {
+          return 50;
+        },
+        opacity: 0,
+      });
+      gsap.set(" .videos__stage-col[data-id='5']", {
+        x: () => {
+          return -50;
+        },
+        opacity: 0,
+      });
+      gsap.set(" .videos__stage-col[data-id='6']", {
+        x: () => {
+          return 50;
+        },
+        opacity: 0,
+      });
+      gsap.set(".recipes__copy-title--1", {
+        x: () => {
+          return 0;
+        },
+        opacity: 0,
+      });
+      gsap.set(".recipes__copy-title--2", {
+        x: () => {
+          return 0;
+        },
+        opacity: 0,
+      });
+      gsap.set(".recipes__copy-title--3", {
+        x: () => {
+          return 0;
+        },
+        opacity: 0,
+      });
+      gsap.set(".recipes__copy-title--4", {
+        x: () => {
+          return 0;
+        },
+        opacity: 0,
+      });
+      gsap.set(".recipes__copy-title--5", {
+        x: () => {
+          return 0;
+        },
+        opacity: 0,
+      });
+      gsap.set(".recipes__copy-title--6", {
         x: () => {
           return 0;
         },
@@ -189,27 +489,589 @@ export default {
       gsap.set(".recipes__recipe", {
         opacity: 0,
       });
+      gsap.set(".logo", {
+        opacity: 0,
+      });
+      gsap.to(".logo", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        duration: 1,
 
-      gsap.to(".video[data-id='1'] ", {
+        scrollTrigger: {
+          trigger: ".video[data-id='1']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+
+      gsap.to(".hero__p", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        delay: 1,
+        duration: 1,
+        ease: "power4.out",
+        opacity: 1,
+      });
+
+      gsap.set(".hero__button", {
+        opacity: 0,
+      });
+      gsap.set(".sp-1", {
+        opacity: 0,
+      });
+      gsap.set(".sp-2", {
+        opacity: 0,
+      });
+      gsap.set(".sp-3", {
+        opacity: 0,
+      });
+      gsap.set(".sp-4", {
+        opacity: 0,
+      });
+      gsap.set(".sp-5", {
+        opacity: 0,
+      });
+      gsap.set(".sp-6", {
+        opacity: 0,
+      });
+
+      gsap.to(".hero__img--serve", {
+        x: 0,
+        delay: 2.9,
+        duration: 1,
+      });
+      gsap.to(".hero__button", {
+        delay: 2.3,
+        ease: "power4.out",
+        x: 0,
+        opacity: 1,
+      });
+      gsap.to(".sp-1", {
+        delay: 2.4,
+        ease: "power4.out",
+        x: 0,
+        opacity: 1,
+      });
+      gsap.to(".sp-2", {
+        delay: 2.5,
+        ease: "power4.out",
+        x: 0,
+        opacity: 1,
+      });
+      gsap.to(".sp-3", {
+        delay: 2.6,
+        ease: "power4.out",
+        x: 0,
+        opacity: 1,
+      });
+      gsap.to(".sp-4", {
+        delay: 2.7,
+        ease: "power4.out",
+        x: 0,
+        opacity: 1,
+      });
+      gsap.to(".sp-5", {
+        delay: 8,
+        ease: "power4.out",
+        x: 0,
+        opacity: 1,
+      });
+      gsap.to(".sp-6", {
+        delay: 2.9,
+        ease: "power4.out",
+        x: 0,
+        opacity: 1,
+      });
+
+      gsap.to(".videos__stage-col[data-id='1']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+
+        scrollTrigger: {
+          trigger: ".video[data-id='1']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+
+      // gsap.to(".recipes__copy-wrapper[data-id='1'] ", {
+      //   // Animate .recipes__recipe
+      //   // properties to animate here
+      //   opacity: 1,
+      //   scrollTrigger: {
+      //     trigger: ".video[data-id='1']", // what element the animation should start at
+      //     start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+      //     toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+      //   },
+      // });
+      gsap.to(".recipes__copy-title--1[data-id='1']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: ".video[data-id='1']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+      gsap.to(".recipes__copy-title--2[data-id='1']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        delay: 0.25,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: ".video[data-id='1']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+      gsap.to(".recipes__copy-title--3[data-id='1']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        delay: 0.5,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: ".video[data-id='1']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+      gsap.to(".recipes__copy-title--4[data-id='1']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        delay: 0.75,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: ".video[data-id='1']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+
+      //////////////////////////////////////////////
+
+      gsap.to(".videos__stage-col[data-id='2']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".video[data-id='2']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+
+      gsap.to(".recipes__copy-title--1[data-id='2']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".video[data-id='2']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+      gsap.to(".recipes__copy-title--2[data-id='2']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        delay: 0.25,
+        scrollTrigger: {
+          trigger: ".video[data-id='2']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+      gsap.to(".recipes__copy-title--3[data-id='2']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        delay: 0.5,
+        scrollTrigger: {
+          trigger: ".video[data-id='2']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+      gsap.to(".recipes__copy-title--4[data-id='2']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        delay: 0.75,
+        scrollTrigger: {
+          trigger: ".video[data-id='2']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+      //////////////////////////////////
+      //////////////////////////////////////////////
+
+      gsap.to(".videos__stage-col[data-id='3']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".video[data-id='3']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+
+      gsap.to(".recipes__copy-title--1[data-id='3']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".video[data-id='3']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+      gsap.to(".recipes__copy-title--2[data-id='3']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        delay: 0.25,
+        scrollTrigger: {
+          trigger: ".video[data-id='3']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+      gsap.to(".recipes__copy-title--3[data-id='3']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        delay: 0.5,
+        scrollTrigger: {
+          trigger: ".video[data-id='3']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+      gsap.to(".recipes__copy-title--4[data-id='3']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        delay: 0.75,
+        scrollTrigger: {
+          trigger: ".video[data-id='3']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+
+      gsap.to(".videos__stage-col[data-id='3']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".video[data-id='3']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+
+      gsap.to(".recipes__copy-wrapper[data-id='3'] ", {
         // Animate .recipes__recipe
         // properties to animate here
         opacity: 1,
         scrollTrigger: {
-          trigger: ".video[data-id='1']", // what element the animation should start at
-          start: "100% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          trigger: ".video[data-id='3']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
           toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
         },
       });
-      gsap.to(".recipes__copy-wrapper[data-id='1'] ", {
+
+      ////////////////////////////////////////////////////
+
+      //////////////////////////////////
+      //////////////////////////////////////////////
+
+      gsap.to(".videos__stage-col[data-id='4']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".video[data-id='2']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+
+      gsap.to(".recipes__copy-title--1[data-id='4']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".video[data-id='4']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+      gsap.to(".recipes__copy-title--2[data-id='4']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        delay: 0.25,
+        scrollTrigger: {
+          trigger: ".video[data-id='4']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+      gsap.to(".recipes__copy-title--3[data-id='4']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        delay: 0.5,
+        scrollTrigger: {
+          trigger: ".video[data-id='4']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+      gsap.to(".recipes__copy-title--4[data-id='4']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        delay: 0.75,
+        scrollTrigger: {
+          trigger: ".video[data-id='4']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+
+      gsap.to(".videos__stage-col[data-id='4']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".video[data-id='4']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+
+      gsap.to(".recipes__copy-wrapper[data-id='4'] ", {
         // Animate .recipes__recipe
         // properties to animate here
         opacity: 1,
         scrollTrigger: {
-          trigger: ".video[data-id='1']", // what element the animation should start at
-          start: "100% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          trigger: ".video[data-id='4']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
           toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
         },
       });
+
+      ////////////////////////////////////////////////////
+
+      //////////////////////////////////
+      //////////////////////////////////////////////
+
+      gsap.to(".videos__stage-col[data-id='5']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".video[data-id='5']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+
+      gsap.to(".recipes__copy-title--1[data-id='5']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".video[data-id='5']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+      gsap.to(".recipes__copy-title--2[data-id='5']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        delay: 0.25,
+        scrollTrigger: {
+          trigger: ".video[data-id='5']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+      gsap.to(".recipes__copy-title--3[data-id='5']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        delay: 0.5,
+        scrollTrigger: {
+          trigger: ".video[data-id='5']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+      gsap.to(".recipes__copy-title--4[data-id='5']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        delay: 0.75,
+        scrollTrigger: {
+          trigger: ".video[data-id='5']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+
+      gsap.to(".videos__stage-col[data-id='5']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".video[data-id='5']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+
+      gsap.to(".recipes__copy-wrapper[data-id='5'] ", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".video[data-id='5']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+
+      ////////////////////////////////////////////////////
+
+      //////////////////////////////////
+      //////////////////////////////////////////////
+
+      gsap.to(".videos__stage-col[data-id='6']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".video[data-id='6']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+
+      gsap.to(".recipes__copy-title--1[data-id='6']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".video[data-id='6']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+      gsap.to(".recipes__copy-title--2[data-id='6']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        delay: 0.25,
+        scrollTrigger: {
+          trigger: ".video[data-id='6']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+      gsap.to(".recipes__copy-title--3[data-id='6']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        delay: 0.5,
+        scrollTrigger: {
+          trigger: ".video[data-id='6']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+      gsap.to(".recipes__copy-title--4[data-id='6']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        delay: 0.75,
+        scrollTrigger: {
+          trigger: ".video[data-id='6']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+
+      gsap.to(".videos__stage-col[data-id='6']", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        x: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".video[data-id='6']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+
+      gsap.to(".recipes__copy-wrapper[data-id='6'] ", {
+        // Animate .recipes__recipe
+        // properties to animate here
+        opacity: 1,
+        scrollTrigger: {
+          trigger: ".video[data-id='6']", // what element the animation should start at
+          start: "150% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+          toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+        },
+      });
+
+      ////////////////////////////////////////////////////
 
       gsap.to(".recipes__recipe[data-id='2']", {
         // Animate .recipes__recipe
@@ -326,23 +1188,17 @@ export default {
     },
     clickFirstTab: function () {
       secondTab = !secondTab;
-      console.log("first tab");
     },
     clickSecondTab: function () {
       firstTab = !firstTab;
-      console.log("second tab");
     },
     ToggleDiv: function (txtDivID) {
       $("#" + txtDivID).toggle(400);
       this.isHidden = !isHidden;
-      console.log(isHidden);
     },
     toggleTab: function (index) {
       $(data - id + "=" + index).toggle(400);
       isHidden = !isHidden;
-    },
-    toggle(index) {
-      this.active = index;
     },
     logoBar: function (event) {
       var recipeVideo = document.getElementById("recipe-video-1");
@@ -390,16 +1246,12 @@ export default {
             $("#recipe-video-2").removeClass("playing");
             $("#recipe-video-3").removeClass("playing");
             $("#recipe-video-4").removeClass("playing");
-
             $("#recipe-video-5").removeClass("playing");
-
             $("#recipe-video-6").removeClass("playing");
             $(".video__pause-play[data-id=2]").animate({ opacity: "1" }, 250);
             $(".video__pause-play[data-id=3]").animate({ opacity: "1" }, 250);
             $(".video__pause-play[data-id=4]").animate({ opacity: "1" }, 250);
-
             $(".video__pause-play[data-id=5]").animate({ opacity: "1" }, 250);
-
             $(".video__pause-play[data-id=6]").animate({ opacity: "1" }, 250);
             break;
           case 2:
@@ -411,9 +1263,7 @@ export default {
             $("#recipe-video-1").removeClass("playing");
             $("#recipe-video-3").removeClass("playing");
             $("#recipe-video-4").removeClass("playing");
-
             $("#recipe-video-5").removeClass("playing");
-
             $("#recipe-video-6").removeClass("playing");
             $(".video__pause-play[data-id=1]").animate({ opacity: "1" }, 250);
             $(".video__pause-play[data-id=3]").animate({ opacity: "1" }, 250);
@@ -430,7 +1280,6 @@ export default {
             $("#recipe-video-1").removeClass("playing");
             $("#recipe-video-2").removeClass("playing");
             $("#recipe-video-4").removeClass("playing");
-
             $("#recipe-video-5").removeClass("playing");
             $("#recipe-video-6").removeClass("playing");
             $(".video__pause-play[data-id=1]").animate({ opacity: "1" }, 250);
@@ -526,30 +1375,6 @@ const props = defineProps({
     default: "1",
   },
 });
-$(document).on("click", "#video-id", function (e) {});
-$(document).on("click", "#video-id", function (e) {
-  var video = $(this).get(0);
-  if (video.paused === false) {
-    video.pause();
-  } else {
-    video.play();
-  }
-
-  return false;
-});
-$(document).ready(function () {
-  $(".black-arrow").on("click", () => {
-    var y = $(window).scrollTop();
-    $("html, body").animate({ scrollTop: y + 400 }, 600);
-  });
-
-  var recipe_link = document.querySelector(".a--recipe-1");
-  recipe_link.href = "body/Bulleit_Recipe_BulleitCola.pdf";
-  recipe_link.download = "Bulleit_Recipe_BulleitCola.pdf";
-  recipe_link.on("click", function () {
-    recipe_link.dispatchEvent(new MouseEvent("click"));
-  });
-});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -584,7 +1409,6 @@ $(document).ready(function () {
   opacity: 1 !important;
   border-bottom: 3px solid #fcf5df;
 }
-
 .overlay-panel-actions-primary p {
   opacity: 0.5;
 }
@@ -619,7 +1443,6 @@ $(document).ready(function () {
 }
 .recipes__copy-title {
   color: #fcf5df;
-
   font-family: "JohnnieWalker-Headline";
   font-size: 80px;
   line-height: 70px;
@@ -634,7 +1457,6 @@ $(document).ready(function () {
 }
 .recipe__button--explore {
   color: #fcf5df;
-
   font-family: "JohnnieWalker-Headline";
   font-size: 23px;
   line-height: 33px;
@@ -644,7 +1466,6 @@ $(document).ready(function () {
 .recipe__tab-button,
 .recipe__tab-button--active {
   color: #fcf5df;
-
   font-family: "JohnnieWalker-Headline";
   font-size: 22px;
   letter-spacing: 1px;
@@ -653,7 +1474,6 @@ $(document).ready(function () {
 }
 .recipe__tab-ingredient {
   color: #fcf5df;
-
   font-family: "JohnnieWalker-Headline";
   font-size: 18px;
   line-height: 18px;
@@ -694,7 +1514,6 @@ $(document).ready(function () {
 .explore-recipe-chevron:first-child {
   animation: move 3s ease-out 0.1s infinite;
 }
-
 .explore-recipe-chevron:nth-child(2) {
   animation: move 3s ease-out 0.2s infinite;
 }
@@ -790,7 +1609,6 @@ $(document).ready(function () {
     margin-left: 35%;
   }
 }
-
 @media only screen and (max-width: 600px) {
   .recipes__img-wrapper img {
     margin-top: -80px !important;

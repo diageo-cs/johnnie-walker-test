@@ -42,7 +42,7 @@
         />
         Your browser does not support HTML video.
       </video>
-      <video
+      <!-- <video
         id="hero-video-mob"
         width="100%"
         playsinline=""
@@ -58,7 +58,7 @@
           type="video/mp4"
         />
         Your browser does not support HTML video.
-      </video>
+      </video> -->
 
       <img class="hero__drinkaware" src="../../public/hero/GB_DRINKAWARE.svg" />
       <img class="hero__logo" src="../../public/hero/jw-logo.svg" />
@@ -115,92 +115,166 @@ const props = defineProps({
     default: "1",
   },
 });
-$(document).ready(function () {
-  gsap.set(".api__bg", {
-    height: 0,
-  });
-  gsap.set(".sp-1", {
-    x: 500,
-    opacity: 1,
-  });
-  gsap.set(".sp-2", {
-    x: 300,
-    opacity: 1,
-  });
-  gsap.set(".sp-3", {
-    x: 300,
-    opacity: 1,
-  });
-  gsap.set(".sp-4", {
-    x: 300,
-    opacity: 1,
-  });
-  gsap.set(".sp-5", {
-    x: 300,
-    opacity: 1,
-  });
-  gsap.set(".sp-6", {
-    x: 300,
-    opacity: 1,
-  });
-  gsap.set(".hero__mobile-logo", {
-    x: -300,
-  });
-  gsap.set(".hero__img-wrapper--drinkaware", {
-    opacity: 0,
-  });
-  gsap.set(".hero__line", {
-    width: 0,
-  });
-  gsap.set(".hero__title-line--1", {
-    x: () => {
-      return -50;
-    },
-    opacity: 0,
-  });
-  gsap.set(".hero__title-line--2", {
-    x: () => {
-      return window.innerWidth < 600 ? -50 : 50;
-    },
-    opacity: 0,
-  });
-  gsap.set(".hero__title-line--3", {
-    x: -50,
-    opacity: 0,
-  });
+// $(document).ready(function () {
+//   gsap.set(".api__bg", {
+//     height: 0,
+//   });
+//   gsap.set(".hero__p", {
+//     x: () => {
+//       return 0;
+//     },
+//     opacity: 0,
+//   });
+//   gsap.set(".sp-1", {
+//     x: () => {
+//       return 800;
+//     },
+//     opacity: 1,
+//   });
+//   gsap.set(".sp-2", {
+//     x: () => {
+//       return 900;
+//     },
+//     opacity: 1,
+//   });
+//   gsap.set(".sp-3", {
+//     x: () => {
+//       return 1000;
+//     },
+//     opacity: 1,
+//   });
+//   gsap.set(".sp-4", {
+//     x: () => {
+//       return 1100;
+//     },
+//     opacity: 1,
+//   });
+//   gsap.set(".sp-5", {
+//     x: () => {
+//       return 1200;
+//     },
+//     opacity: 1,
+//   });
+//   gsap.set(".sp-6", {
+//     x: () => {
+//       return 1300;
+//     },
+//     opacity: 1,
+//   });
+//   gsap.to(".hero__p", {
+//     // Animate .recipes__recipe
+//     // properties to animate here
+//     duration: 10.5,
+//     delay: 2,
+//     x: 0,
+//     opacity: 1,
+//   });
+//   gsap.to(".sp-1", {
+//     // Animate .recipes__recipe
+//     // properties to animate here
+//     duration: 10.5,
+//     delay: 2,
+//     x: 0,
+//     opacity: 1,
+//   });
+//   gsap.to(".sp-2", {
+//     // Animate .recipes__recipe
+//     // properties to animate here
+//     duration: 1,
 
-  var tl_heroText = gsap.timeline();
+//     x: 0,
+//     opacity: 1,
+//   });
+//   gsap.to(".sp-3", {
+//     // Animate .recipes__recipe
+//     // properties to animate here
+//     duration: 1.5,
 
-  if (window.innerWidth < 600 && window.inner) {
-  } else {
-  }
-  tl_heroText
-    .from(".sp-1", ".sp-2", ".sp-3", ".sp-4", ".sp-5", ".sp-6", {
-      opacity: 0,
-      x: 500,
-      stagger: 1.25,
-    })
-    .to(".hero__line", {
-      width: "100%",
-    })
-    .to([".hero__img-wrapper", ".hero__mobile-logo"], {
-      x: 0,
-      ease: "back",
-      duration: 0.75,
-    })
-    .to(".hero__img-wrapper--drinkaware", {
-      opacity: 1,
-    })
-    .to(
-      ".api__bg",
-      {
-        height: "auto",
-        duration: 0.5,
-        ease: "back",
-      },
-      "-=.5"
-    );
-});
+//     x: 0,
+//     opacity: 1,
+//   });
+//   gsap.to(".sp-4", {
+//     // Animate .recipes__recipe
+//     // properties to animate here
+//     duration: 2,
+
+//     x: 0,
+//     opacity: 1,
+//   });
+//   gsap.to(".sp-5", {
+//     // Animate .recipes__recipe
+//     // properties to animate here
+//     duration: 2.5,
+
+//     x: 0,
+//     opacity: 1,
+//   });
+//   gsap.to(".sp-6", {
+//     // Animate .recipes__recipe
+//     // properties to animate here
+//     duration: 3,
+//     ease: "power4.out",
+//     x: 0,
+//     opacity: 1,
+//   });
+//   gsap.set(".hero__mobile-logo", {
+//     x: -300,
+//   });
+//   gsap.set(".hero__img-wrapper--drinkaware", {
+//     opacity: 0,
+//   });
+//   gsap.set(".hero__line", {
+//     width: 0,
+//   });
+//   gsap.set(".hero__title-line--1", {
+//     x: () => {
+//       return -50;
+//     },
+//     opacity: 0,
+//   });
+//   gsap.set(".hero__title-line--2", {
+//     x: () => {
+//       return window.innerWidth < 600 ? -50 : 50;
+//     },
+//     opacity: 0,
+//   });
+//   gsap.set(".hero__title-line--3", {
+//     x: -50,
+//     opacity: 0,
+//   });
+
+//   var tl_heroText = gsap.timeline();
+
+//   if (window.innerWidth < 600 && window.inner) {
+//   } else {
+//   }
+//   tl_heroText
+//     .from(".sp-1", ".sp-2", ".sp-3", ".sp-4", ".sp-5", ".sp-6", {
+//       opacity: 0,
+//       x: 500,
+//       stagger: 1.25,
+//     })
+//     .to(".hero__line", {
+//       width: "100%",
+//     })
+//     .to([".hero__img-wrapper", ".hero__mobile-logo"], {
+//       x: 0,
+//       ease: "back",
+//       duration: 0.75,
+//     })
+//     .to(".hero__img-wrapper--drinkaware", {
+//       opacity: 1,
+//     })
+//     .to(
+//       ".api__bg",
+//       {
+//         height: "auto",
+//         duration: 0.5,
+//         ease: "back",
+//       },
+//       "-=.5"
+//     );
+// });
 
 // $(document).ready(function () {
 //   gsap.set(".drinkware-logo", {
@@ -266,7 +340,7 @@ $(document).ready(function () {
 }
 .hero__p {
   color: #fcf5df;
-  font-family: "JohnnieWalkerSerif-Book", serif;
+  font-family: "JohnnieWalkerSerif-Book";
   font-size: 20px;
   line-height: 28px;
   font-style: italic;
@@ -288,6 +362,9 @@ $(document).ready(function () {
   margin-left: 50px;
   width: 150px;
   transition: all 0.3s ease;
+}
+.hero__button span {
+  font-family: "JohnnieWalker-Headline";
 }
 .hero__button:hover {
   background-color: #eaaa00;

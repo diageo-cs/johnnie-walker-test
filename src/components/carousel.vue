@@ -42,6 +42,10 @@
   </div>
 </template>
 <script setup>
+import gsap from "gsap";
+import { CSSRulePlugin } from "gsap/CSSRulePlugin";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(CSSRulePlugin, ScrollTrigger);
 const props = defineProps({
   iteration: {
     type: String,
@@ -69,6 +73,28 @@ var carousel = {
   },
 };
 $(document).ready(function () {
+  gsap.set(".carousel__wrapper", {
+    y: () => {
+      return 200;
+    },
+    opacity: 0,
+  });
+
+  gsap.to(".carousel__wrapper", {
+    // Animate .recipes__recipe
+    // properties to animate here
+    opacity: 1,
+    duration: 1,
+    y: 0,
+    scrollTrigger: {
+      trigger: ".carousel__wrapper", // what element the animation should start at
+      start: "80% bottom", // 10% of .recipes__recipe[data-id='2'] enters the bottom of the viewport
+      toggleActions: "play none none reverse", //onEnter, onLeave, onEnterBack, and onLeaveBack
+    },
+  });
+});
+/////////////////
+$(document).ready(function () {
   $("." + carouselIteration)
     .closest(".carousel__wrapper")
     .prepend(
@@ -79,7 +105,6 @@ $(document).ready(function () {
     .append(
       `<img class="carousel__next--${props.iteration}" src="/images/chevron--left.svg" width="40" style="position: absolute;top: calc(50% - 18px);z-index: 1150;right: 20px;transform:rotate(180deg)">`
     );
-
   $("." + carouselIteration).slick({
     dots: false,
     infinite: true,
