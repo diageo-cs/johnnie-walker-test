@@ -1241,7 +1241,9 @@ const props = defineProps({
 .recipes__copy-title--4[data-id="2"],
 .recipes__copy-title--4[data-id="3"],
 .recipes__copy-title--4[data-id="4"],
-.recipes__copy-title--4[data-id="6"],
+.recipes__copy-title--4[data-id="6"] {
+  margin-left: 15px;
+}
 .ingredient--2[data-id="3"]:second-line {
   margin-left: 15px;
 }
