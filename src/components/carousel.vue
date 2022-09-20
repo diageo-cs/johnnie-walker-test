@@ -157,6 +157,7 @@ $(document).ready(function () {
   font-weight: 400;
   letter-spacing: 0;
   line-height: 28px;
+  text-align: center;
 }
 .carousel__button {
   color: hsl(44, 100%, 46%);
@@ -167,6 +168,10 @@ $(document).ready(function () {
   background-color: #fff;
   height: 50px;
   width: 130px;
+}
+.carousel__product {
+  display: flex;
+  flex-direction: column;
 }
 .slick-slide {
   color: white;
