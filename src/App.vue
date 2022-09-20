@@ -1,10 +1,8 @@
 <script setup>
 import channelsightWidget from "./js/channelsight-widget.js";
 import dataModel from "./js/model.js";
-import csModal from "./components/csModal.vue";
 import hero from "./components/hero.vue";
 import ingredients from "./components/ingredients.vue";
-import inlineRetailers from "./components/inline-retailers.vue";
 import terms from "./components/terms.vue";
 import carousel from "./components/carousel.vue";
 import carouselHeader from "./components/carousel-header.vue";
@@ -26,14 +24,10 @@ var brandContext =
 
 <template>
   <hero />
-  <!-- <test /> -->
-  <!-- <inlineRetailers /> -->
-  <!-- <csModal /> -->
   <scrollDown />
   <ingredients />
   <carouselHeader />
   <carousel />
-  <!-- <videos /> -->
   <terms />
 </template>
 
